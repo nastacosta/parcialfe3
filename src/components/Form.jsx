@@ -3,32 +3,31 @@ import Card from "./Card";
 
 const Form = () => {
   const [error, setError] = useState(false);
-
+  const [verified, setVerified] = useState(false);
   const [mascota, setMascota] = useState({
     name: "",
     color: "",
   });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   const handleChangeName = (event) => {
-    const name = event.target.value;
-    if (name.trim().length >= 3) {
-      setMascota({ ...mascota, name: event.target.value });
-      setError(false);
-    } else {
-      setError(true);
-    }
+    setMascota({ ...mascota, name: event.target.value });
+    setVerified(false);
+    setError(false);
   };
 
   const handleChangeColor = (event) => {
-    const color = event.target.value;
-    if (color.length >= 6) {
-      setMascota({ ...mascota, color: event.target.value });
+    setMascota({ ...mascota, color: event.target.value });
+    setVerified(false);
+    setError(false);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (mascota.color.length >= 6 && mascota.name.trim().length >= 3) {
+      setVerified(true);
       setError(false);
     } else {
+      setVerified(false);
       setError(true);
     }
   };
@@ -40,14 +39,14 @@ const Form = () => {
         <input type="text" onChange={handleChangeName} />
         <label>Color</label>
         <input type="text" onChange={handleChangeColor} />
-        <button></button>
+        <button>ENVIAR</button>
       </form>
       {error ? (
         <h4 style={{ color: "red" }}>
           Por favor chequea que la información sea correcta
         </h4>
       ) : (
-        <Card mascota={mascota}></Card>
+        verified && <Card mascota={mascota}></Card>
       )}
     </>
   );
