@@ -4,3 +4,12 @@
   padding: 2rem;
   text-align: center;
 }
+
+.pokeName {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+
+  color: rgb(46, 43, 43);
+  letter-spacing: 0.3rem;
+}
