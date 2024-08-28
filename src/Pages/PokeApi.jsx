@@ -8,9 +8,9 @@ function PokeApi() {
 
   useEffect(() => {
     axios(url).then((res) => {
+      setPokemon(res.data);
       setTimeout(() => {
         setLoading(false);
-        setPokemon(res.data);
       }, 850);
     });
   }, []);

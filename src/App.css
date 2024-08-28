@@ -13,3 +13,9 @@
   color: rgb(46, 43, 43);
   letter-spacing: 0.3rem;
 }
+
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
